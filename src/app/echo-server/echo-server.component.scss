@@ -1,0 +1,35 @@
+.chat{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.chat-input{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px #673ab7;
+    &__input-box{
+        flex-grow: 1;
+        border: none;
+        text-align: end;
+        &:focus{
+            outline: none;
+        }
+    }
+}
+.chat-container{
+    border: solid 1px #673ab7;
+    width: 800px;
+    text-align: center;
+}
+.chat-text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 500px;
+}
+
+.message{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

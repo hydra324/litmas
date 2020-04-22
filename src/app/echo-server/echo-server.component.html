@@ -1,0 +1,25 @@
+<p>echo-server works!</p>
+
+
+<div class="chat">
+    <div class="chat-connect">
+        <button mat-raised-button color="primary" (click)="connect()">
+            Connect to echo server
+        </button>
+        <button mat-raised-button color="primary" (click)="disconnect()">
+            Disconnect
+        </button>
+    </div>
+    <div class="chat-container">
+        <div class="chat-input">
+            <input [(ngModel)]="inputValue" (keyup.enter)="sendMessage()" placeholder="Type something here" class="chat-input__input-box"/>
+            <button mat-icon-button (click)="sendMessage()" [disabled]="chatDisabled"><img src="assets/svg/send-black-18dp.svg"></button>
+        </div>
+        <div class="chat-text-container">
+        <div class="message" *ngFor="let message of messages">
+                <span>{{message.author}}</span>
+                <span>{{message.text}}</span>
+            </div>
+        </div>
+    </div>
+</div>
