@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## My guide to run this small web socket client
+- Install node.js v12
+- clone this repo
+- run `npm i` or `npm install` on your project directory. It might take a while to download all the required dependencies for teh project
+- run scripts yaay! - for exmaple `npm run start` to see this running on your local browser
