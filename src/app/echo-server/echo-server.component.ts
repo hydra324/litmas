@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WebsocketServiceService } from '../websocket-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-echo-server',
@@ -20,7 +21,7 @@ export class EchoServerComponent implements OnInit {
   }
 
   connect(){
-    this.wsService.init('wss://echo.websocket.org');
+    this.wsService.init('ws://'+ environment.websocketHost +'websocket/echo');
     this.messages.pop();
     this.messages.push({author:'',text:'connected!'});
     this.subscription = this.wsService.ws.subscribe(
