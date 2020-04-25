@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  websocketHost: 'localhost:8080/ChatServer_war_exploded/',
+  websocketHostSuffix: 'Gradle___com_litmas___BasicChat_1_0_SNAPSHOT_war/',
 };
 
 /*

@@ -19,8 +19,8 @@ export class WebsocketServiceService {
     return this._ws.asObservable();
   }
 
-  sendMessage(message: string){
-    this._ws.next(message);
+  sendMessage(userName: string , message: string){
+    this._ws.next(JSON.stringify({userName,message}));
   }
 
   public close(){

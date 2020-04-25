@@ -3,7 +3,8 @@
 
 <div class="chat">
     <div class="chat-connect">
-        <button mat-raised-button color="primary" (click)="connect()">
+        <input [(ngModel)]="userName" placeholder="user name" (keyup.enter)="connect()"/>
+        <button mat-raised-button color="primary" (click)="connect()" [disabled]="!userName">
             Connect to echo server
         </button>
         <button mat-raised-button color="primary" (click)="disconnect()">
@@ -12,8 +13,8 @@
     </div>
     <div class="chat-container">
         <div class="chat-input">
-            <input [(ngModel)]="inputValue" (keyup.enter)="sendMessage()" placeholder="Type something here" class="chat-input__input-box"/>
-            <button mat-icon-button (click)="sendMessage()" [disabled]="chatDisabled"><img src="assets/svg/send-black-18dp.svg"></button>
+            <input [(ngModel)]="textMessage" (keyup.enter)="sendMessage(textMessage)" placeholder="Type something here" class="chat-input__input-box"/>
+            <button mat-icon-button (click)="sendMessage(textMessage)" [disabled]="chatDisabled"><img src="assets/svg/send-black-18dp.svg"></button>
         </div>
         <div class="chat-text-container">
         <div class="message" *ngFor="let message of messages">

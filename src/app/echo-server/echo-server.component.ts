@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 export class EchoServerComponent implements OnInit {
 
   messages: Array<message>;
-  inputValue: string;
+  textMessage: string;
+  userName: string = "hydra324";
   subscription: any;
   chatDisabled = true;
   
@@ -21,13 +22,14 @@ export class EchoServerComponent implements OnInit {
   }
 
   connect(){
-    this.wsService.init('ws://'+ environment.websocketHost +'websocket/echo');
     this.messages.pop();
-    this.messages.push({author:'',text:'connected!'});
+    this.wsService.init('ws://'+ window.location.hostname+ ':8080/' + environment.websocketHostSuffix +'websocket/chat');
+    this.sendMessage('Hello, im just trying to join!');
+    // this.messages.push({author:'',text:'connected!'});
     this.subscription = this.wsService.ws.subscribe(
       msg => {
-        console.log('message received: ' + msg);
-        this.messages.push({author:'server:',text:msg});
+        console.log('message received: ' + msg.toString());
+        this.messages.push({author:msg.userName+":",text:msg.message});
       }, // Called whenever there is a message from the server.
       err => {
         console.log('message received: ' + err);
@@ -41,14 +43,14 @@ export class EchoServerComponent implements OnInit {
       this.chatDisabled = false;
   }
 
-  sendMessage(){
-    if(!this.inputValue){
+  sendMessage(message: string){
+    if(!message){
       console.log('Empty message! Please type message');
     }
     else{
-      console.log( 'Message is: ' + this.inputValue);
-      this.wsService.sendMessage(this.inputValue);
-      this.inputValue = '';
+      console.log( 'Message is: ' + message);
+      this.wsService.sendMessage(this.userName, message);
+      this.textMessage = '';
     }
   }
 
